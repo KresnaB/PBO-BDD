@@ -12,11 +12,8 @@ import java.util.List;
 
 public class Order_History {
 	List<Order> orderInformation;
-	List<Order> orderHist;
 	List<String> proposedOrders;
-	List<String> proposedOrdersHistory;
 	SaveOrder savedOrder;
-	SaveOrder ordersHistory;
 	
 	@Given("List of orders : $givenOrder")
 	public void givenOrderGoFood(List<String> givenOrder) {
@@ -25,7 +22,23 @@ public class Order_History {
 			orderInformation.add(new Order(e));
 		}
 	}
+	@Given("the location : $givenLocation")
+	public void givenOrderLocation(List<String> givenLocation) {
+		int i = 0;
+		for (Order e : orderInformation) {
+			e.setLocation(givenLocation.get(i));
+			i++;
+		}
+	}
 	
+	@Given("the menu : $givenMenu")
+	public void givenOrderMenu(List<String> givenMenu) {
+		int i = 0;
+		for (Order e : orderInformation) {
+			e.setMenu(givenMenu.get(i));
+			i++;
+		}
+	}
 	@When("Order are : $status")
 	public void whenOrderAre (List<String> status) {
 		int i=0;
@@ -36,30 +49,13 @@ public class Order_History {
 		savedOrder = new SaveOrder(orderInformation);
 		proposedOrders = savedOrder.getSavedOrder();
 	}
-	@Then("Save information : $saveShould")
+	@Then("Save information to order history : $saveShould")
 	public void shouldFindTheseOrder(List<String> saveShould) {
-		assertThat(proposedOrders).isEqualTo(saveShould);
-	}
-	
-	@Given("A List of orders history : $orderHistory")
-	public void givenHistoryOfOrder(List<String> orderHistory) {
-		orderHist = new ArrayList<Order>();
-		for (String e : orderHistory) {
-			orderHist.add(new Order(e));
+		int j = 0;
+		for(String e : proposedOrders) {
+			assertThat(proposedOrders.get(j)).isEqualTo(saveShould.get(j));
+			j++;
 		}
-	}
-	@When("I selected an order : $stat")
-	public void SelectOrderHistory (List<String> stat) {
-		int i=0;
-		for(Order e : orderHist){
-			e.setStat(stat.get(i));
-			i++;
-		}
-		ordersHistory = new SaveOrder(orderHist);
-		proposedOrdersHistory = ordersHistory.getOrderHistory();
-	}
-	@Then("Display selected order : $orderHistory")
-	public void shouldFindTheseOrderHistory(List<String> orderHistory) {
-		assertThat(proposedOrdersHistory).isEqualTo(orderHistory);
+		
 	}
 }
