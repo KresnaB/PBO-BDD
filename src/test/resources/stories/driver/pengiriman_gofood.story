@@ -9,3 +9,8 @@ Scenario:  Find the nearest driver
 Given a list of drivers : Jono, Kasino, Dono
 When The distances between these drivers and the merchant location are : 1.5, 2, 0.5
 Then The sistem should pick : Dono
+
+Scenario:  Find driver with highest rating
+Given drivers list : Jono, Kasino, Dono
+When The rating of each driver : 4.9, 4.5, 4
+Then The sistem should choose : Jono

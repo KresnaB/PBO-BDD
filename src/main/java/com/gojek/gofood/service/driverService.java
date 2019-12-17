@@ -25,5 +25,18 @@ public class driverService {
 		result.add(temp2);
 		return result;
 	}
+	public List<String> getTopRatedName() {
+		ArrayList<String> result= new ArrayList<String>() ;
+		float temp = 50;
+		String temp2 ="";
+		for (Driver e : driversList) {
+			if (e.getRating()<temp) {
+				temp = e.getRating();
+				temp2 = e.getName();
+			}
+		}
+		result.add(temp2);
+		return result;
+	}
 
 }
