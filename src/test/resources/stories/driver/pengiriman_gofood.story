@@ -14,3 +14,8 @@ Scenario:  Find driver with highest rating
 Given drivers list : Jono, Kasino, Dono
 When The rating of each driver : 4.9, 4.5, 4
 Then The sistem should choose : Jono
+
+Scenario:  Find the best driver based on distance and rating
+Given list of driver : Jono, Kasino, Dono
+When The score from rating and distance of each driver : 10.1, 15.5, 1
+Then The sistem should choose the best name : Dono

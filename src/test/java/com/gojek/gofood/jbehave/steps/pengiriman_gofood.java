@@ -13,9 +13,8 @@ public class pengiriman_gofood {
 	List<Driver> drivers;
 	List<String> proposedDrivers;
 	driverService DriverService;
-	List<Driver> drivers2;
 	List<String> highestRating;
-	driverService DriverService2;
+	List<String> highestScore;
 	@Given("a list of drivers : $givenDrivers")
 	public void givenListOfDrivers(List<String> givenDrivers) {
 		drivers = new ArrayList<Driver>();
@@ -42,25 +41,49 @@ public class pengiriman_gofood {
 	
 	@Given("drivers list : $givenlistDrivers")
 	public void givenListOfRatedDrivers(List<String> givenlistDrivers) {
-		drivers2 = new ArrayList<Driver>();
+		drivers = new ArrayList<Driver>();
 		for (String e : givenlistDrivers) {
-			drivers2.add(new Driver(e));
+			drivers.add(new Driver(e));
 		}
 	}
 	
 	@When("The rating of each driver : $rating")
 	public void whenRating (List<Float> rating) {
 		int i = 0;
-		for(Driver e : drivers2){
+		for(Driver e : drivers){
 			e.setRating(rating.get(i));
 			i++;
 		}
-		DriverService2 = new driverService(drivers2);
-		highestRating = DriverService2.getTopRatedName();
+		DriverService = new driverService(drivers);
+		highestRating = DriverService.getTopRatedName();
 	}
 	
-	@Then("The sistem should choose : $highestRating")
-	public void shouldChoose(List<String> highestRating) {
-		assertThat(highestRating).isEqualTo(highestRating);
+	@Then("The sistem should choose : $highestRatingDrivers")
+	public void shouldChoose(List<String> highestRatingDrivers) {
+		assertThat(highestRating).isEqualTo(highestRatingDrivers);
+	}
+	
+	@Given("list of driver : $givenlistDrivers")
+	public void givenListOfScoredDrivers(List<String> givenlistDrivers) {
+		drivers = new ArrayList<Driver>();
+		for (String e : givenlistDrivers) {
+			drivers.add(new Driver(e));
+		}
+	}
+	
+	@When("The score from rating and distance of each driver : $score")
+	public void whenScore (List<Float> score) {
+		int i = 0;
+		for(Driver e : drivers){
+			e.setRatingDist(score.get(i));
+			i++;
+		}
+		DriverService = new driverService(drivers);
+		highestScore = DriverService.getTopName();
+	}
+	
+	@Then("The sistem should choose the best name : $highestScoredriver")
+	public void shouldChooseBestName(List<String> highestScoredriver) {
+		assertThat(highestScore).isEqualTo(highestScoredriver);
 	}
 }

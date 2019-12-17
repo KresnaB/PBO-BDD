@@ -27,10 +27,10 @@ public class driverService {
 	}
 	public List<String> getTopRatedName() {
 		ArrayList<String> result= new ArrayList<String>() ;
-		float temp = 50;
+		float temp = 0;
 		String temp2 ="";
 		for (Driver e : driversList) {
-			if (e.getRating()<temp) {
+			if (e.getRating()>temp) {
 				temp = e.getRating();
 				temp2 = e.getName();
 			}
@@ -39,4 +39,17 @@ public class driverService {
 		return result;
 	}
 
+	public List<String> getTopName() {
+		ArrayList<String> result= new ArrayList<String>() ;
+		float temp = 50;
+		String temp2 ="";
+		for (Driver e : driversList) {
+			if (e.getRatingDist()<temp) {
+				temp = e.getRatingDist();
+				temp2 = e.getName();
+			}
+		}
+		result.add(temp2);
+		return result;
+	}
 }
