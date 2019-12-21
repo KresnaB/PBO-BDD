@@ -10,8 +10,7 @@ Given a list of products : Sate Taichan 10 tusuk, Bibimbap 1 porsi, Gule Kambing
 When The distances between the merchants and my location are : 0.5, 1, 1.5
 Then The sistem should pick : Sate Taichan 10 tusuk
 
-Scenario: Product not found
+Scenario: Cannot find of product
 Given a list of products : Sate Markonah Sarijadi, Sate Dono Sariwangi, Sate Jono Cibabat
-When I search: Sate Abdul Ciwaruga
-And a list of products is null
-Then The sistem should display : Product not found
+When I search product : Sate Abdul Ciwaruga
+Then the system should display product : Sate Abdul Ciwaruga not found

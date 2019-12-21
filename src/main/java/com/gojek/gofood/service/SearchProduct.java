@@ -2,7 +2,9 @@ package com.gojek.gofood.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
+import com.gojek.gofood.model.Merchant;
 import com.gojek.gofood.model.Products;
 
 public class SearchProduct {
@@ -24,6 +26,15 @@ public class SearchProduct {
 			}
 		}
 		result.add(temp2);
+		return result;
+	}
+	public List<Products> getSearchedProducts(String Products) {
+		ArrayList<Products> result= new ArrayList<Products>() ;
+		for (Products m : productList) {
+			if (Pattern.matches("." + Products + ".", m.getName())) {
+				result.add(m);
+			}
+		}
 		return result;
 	}
 }

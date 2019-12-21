@@ -38,4 +38,23 @@ public class Search_products {
 		assertThat(proposedProducts).isEqualTo(nearestProducts);
 	}
 	
+	@Given("a list of products : $givenProducts")
+	public void givenListOfProducts(List<String> givenProducts) {
+		products = new ArrayList<Products>();
+		for(String e : givenProducts) {
+			products.add(new Products(e));
+		}		
+	}
+	@When("I search product : $productSearch")
+	public void searchProduct(String productName) {
+		searchProduct = new SearchProduct(products);
+		proposedProducts = searchProduct.getSearchedProducts(productName);
+	}
+	@Then("the system should display product : $productNotFound not found")
+	public void shouldDisplay(String productNotFound) {
+		if (proposedProducts == null) {
+			assertThat(productNotFound).isEqualTo("Product not found");
+		}
+	}
+	
 }
