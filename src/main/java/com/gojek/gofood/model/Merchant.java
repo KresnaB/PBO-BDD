@@ -4,6 +4,11 @@ public class Merchant {
 	private String name;
 	private float distance;
 	
+	public Merchant (String name) {
+		this.name = name;
+		this.distance = 0;
+	}
+	
 	public String getName() {
 		return name;
 	}
