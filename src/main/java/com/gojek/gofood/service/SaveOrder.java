@@ -16,20 +16,10 @@ public class SaveOrder {
 		String temp2 ="Complete";
 		for (Order e : orderInfo) {
 			if (e.getStatus().equals(temp2)) {
-				result.add(e.getInfo());
+				result.add(e.getInfo()+" "+e.getLocation()+" "+e.getMenu());
 			}
 		}
 		
-		return result;
-	}
-	public List<String> getOrderHistory() {
-		ArrayList<String> result= new ArrayList<String>() ;
-		boolean temp2 =true;
-		for (Order e : orderInfo) {
-			if (e.getStat()==true) {
-				result.add(e.getInfo());
-			}
-		}
 		return result;
 	}
 }

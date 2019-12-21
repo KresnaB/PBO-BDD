@@ -2,26 +2,21 @@ package com.gojek.gofood.model;
 
 public class Merchant {
 	private String name;
-	
-	/*
-	 * true = Personal
-	 * false = Company
-	 */
-	private boolean businessForm;
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void setBusinessForm(boolean businessForm) {
-		this.businessForm = businessForm;
-	}
+	private float distance;
 	
 	public String getName() {
 		return name;
 	}
-	
-	public boolean getBusinessForm() {
-		return businessForm;
+  
+	public void setName(String name) {
+		this.name = name;
+	}
+  
+	public float getDistance() {
+		return distance;
+	}
+  
+	public void setDistance(float distance) {
+		this.distance = distance;
 	}
 }

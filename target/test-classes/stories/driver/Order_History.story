@@ -5,12 +5,9 @@ In order to See a list of purchase history
 As a Customer
 I want to Save my purchase history
 
-Scenario:  Save purchase history
-Given List of orders : Sate Markonah Sarijadi 10 Tusuk, Baso Dono Sariwangi 1 porsi, Martabak Jono Cibabat 1 loyang
+Scenario:  Save order history
+Given List of orders : Sate Markonah, Baso Dono, Martabak Jono
+And the location : Sarijadi, Sariwangi, Cibabat
+And the menu : 10 Tusuk sate, 1 porsi baso, 1 loyang keju coklat
 When Order are : Complete, incomplete, Complete
-Then Save information : Sate Markonah Sarijadi 10 Tusuk, Martabak Jono Cibabat 1 loyang
-
-Scenario:  See the history of my order
-Given A List of orders history : Sate Markonah Sarijadi 10 Tusuk, Martabak Jono Cibabat 1 loyang
-When I selected an order : true, false
-Then Display selected order : Sate Markonah Sarijadi 10 Tusuk
+Then Save information to order history : Sate Markonah Sarijadi 10 Tusuk sate, Martabak Jono Cibabat 1 loyang keju coklat
