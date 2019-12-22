@@ -38,6 +38,8 @@ public class Search_products {
 		assertThat(proposedProducts).isEqualTo(nearestProducts);
 	}
 	
+	
+	/*irfan*/
 	@Given("a list of products : $givenProducts")
 	public void givenListOfProducts(List<String> givenProducts) {
 		products = new ArrayList<Products>();
@@ -50,7 +52,7 @@ public class Search_products {
 		searchProduct = new SearchProduct(products);
 		proposedProducts = searchProduct.getSearchedProducts(productName);
 	}
-	@Then("the system should display product : $productNotFound not found")
+	@Then("the system should display product : $productNotFound")
 	public void shouldDisplay(String productNotFound) {
 		if (proposedProducts == null) {
 			assertThat(productNotFound).isEqualTo("Product not found");
